@@ -7,8 +7,11 @@
 
 #include <Runtime\Core\Public\HAL\FileManager.h>
 #include <Runtime\Core\Public\Misc\Paths.h>
-#include <Runtime\Core\Public\Windows\COMPointer.h>
-
+#if ENGINE_MAJOR_VERSION >= 5 && ENGINE_MINOR_VERSION >= 8
+	#include <Runtime\Core\Public\Microsoft\COMPointer.h>
+#else
+	#include <Runtime\Core\Public\Windows\COMPointer.h>
+#endif
 
 #define MAX_FILETYPES_STR 4096
 #define MAX_FILENAME_STR 65536 // This buffer has to be big enough to contain the names of all the selected files as well as the null characters between them and the null character at the end
